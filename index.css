@@ -1,0 +1,504 @@
+html {
+  background: #0C090A;
+}
+
+.header {
+  position: absolute;
+  color: white;
+  z-index: 1;
+  font-family: 'Rochester', cursive;
+  text-align: center;
+  width: 100%;
+  font-size: 65px;
+  top: 8%;
+}
+
+img {
+  position: relative;
+  width: 21%;
+}
+
+.wifey {
+  left: 21%;
+  top: 57%;
+  transform: rotate(-3deg);
+}
+
+.wifey-shadow {
+  left: 25%;
+  top: 76%;
+  height: 10px;
+  width: 15%;
+  box-shadow: 0px 14px 10px -3px black;
+}
+
+.hubbi {
+  left: 34%;
+  top: 57%;
+  transform: rotate(3deg);
+}
+
+.hubbi-shadow {
+  left: 59%;
+  top: 76%;
+  height: 10px;
+  width: 15%;
+  box-shadow: 0px 14px 10px -3px black;
+}
+
+.tree {
+  width: 100px;
+  height: 205px;
+  position: relative;
+  left: 42%;
+  top: 45%;
+}
+
+
+.canvas {
+  --size: 80vmin;
+  width: var(--size);
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes shake {
+  0%,
+  50%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) translate(0, 0);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(4deg) translate(0, -10%);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-6deg) translate(0, -12%);
+  }
+}
+
+.canvas:active {
+  animation: shake 0.5s infinite;
+}
+
+.canvas div,
+.canvas div::before,
+.canvas div::after {
+  position: absolute;
+  box-sizing: border-box;
+  display: block;
+}
+
+.base {
+  width: 60%;
+  height: 26%;
+  bottom: 0;
+  left: 20%;
+  border-radius: 100% / 40%;
+  background: radial-gradient(100% 50% at 50% 14%, #000, #0000 80%),
+    linear-gradient(to right, #0004, #0000, #0004);
+  background-color: #222;
+}
+
+.base ~ .base {
+  -webkit-mask: radial-gradient(100% 50% at 50% 14%, #0000 50%, #000 51%);
+  mask: radial-gradient(100% 50% at 50% 14%, #0000 50%, #000 51%);
+  background: radial-gradient(150% 112% at 50% 0%, #000 38%, #0000 0),
+    radial-gradient(100% 50% at 50% 14%, #000, #0000 80%),
+    linear-gradient(to right, #0004, #0000, #0004),
+    repeating-linear-gradient(to right, #444 0 1.2%, #666 1.4%, #333 0 2.4%);
+  z-index: 3;
+}
+
+.bowl {
+  display: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background-color: #0C090A;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.bowl + .bowl {
+  z-index: 2;
+  background: #beeeef33;
+  box-shadow: inset 0 0 2vmin #fff8, inset 3vmin 0 5vmin #0003,
+    inset -3vmin 0 5vmin #0003, inset 0 -20vmin 3vmin -14vmin #0007;
+}
+
+.ground {
+  width: 80%;
+  height: 15%;
+  border-radius: 50%;
+  background: white;
+  top: 69%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.snow {
+  width: 97.5%;
+  height: 95%;
+  border-radius: 50%;
+  background: linear-gradient(#0000 79%, #eee 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset -2vmin 2vmin 4vmin -2vmin #fffa,
+    inset 2vmin 0 4vmin -2vmin #0001;
+}
+
+.reflection {
+  width: 45%;
+  height: 18%;
+  background: #f003;
+  background: linear-gradient(#fff4, #fff0);
+  border-radius: 50%;
+  top: 13%;
+  left: 60%;
+  transform: rotate(17deg) translateX(-50%);
+}
+
+.canvas:active .shadow {
+  opacity: 0;
+}
+
+.shadow {
+  width: 100%;
+  height: 15%;
+  background: radial-gradient(farthest-side, #0008, #0000);
+  border-radius: 50%;
+  bottom: -4%;
+  left: -5%;
+  filter: blur(1vmin);
+}
+
+@keyframes snowfall {
+  to {
+    transform: translate(0, calc(var(--size) * 0.77));
+  }
+}
+
+.snowflake {
+  left: 50%;
+  top: -5%;
+  width: 2%;
+  height: 2%;
+  background: white;
+  border-radius: 50%;
+  box-shadow: inset 0.25vmin -0.25vmin 0.25vmin #0002;
+  animation: snowfall 4s 4 forwards;
+}
+
+/* this is super ugly, it would be better (or at least cleaner) in SASS */
+.snowflake:nth-child(3n) {
+  z-index: 1;
+}
+.snowflake:nth-child(1) {
+  left: 25%;
+  animation-delay: 1s;
+}
+.snowflake:nth-child(2) {
+  left: 20%;
+  animation-delay: 2s;
+}
+.snowflake:nth-child(3) {
+  left: 30%;
+  animation-delay: 3s;
+}
+.snowflake:nth-child(4) {
+  left: 40%;
+  animation-delay: 4s;
+}
+.snowflake:nth-child(5) {
+  left: 50%;
+  animation-delay: 5s;
+}
+.snowflake:nth-child(6) {
+  left: 60%;
+  animation-delay: 1.5s;
+}
+.snowflake:nth-child(7) {
+  left: 70%;
+  animation-delay: 2.5s;
+}
+.snowflake:nth-child(8) {
+  left: 80%;
+  animation-delay: 3.5s;
+}
+.snowflake:nth-child(9) {
+  left: 75%;
+  animation-delay: 4.5s;
+}
+.snowflake:nth-child(11) {
+  left: 28%;
+  animation-delay: 5.5s;
+}
+.snowflake:nth-child(12) {
+  left: 19%;
+  animation-delay: 0.5s;
+}
+.snowflake:nth-child(13) {
+  left: 38%;
+  animation-delay: 1.2s;
+}
+.snowflake:nth-child(14) {
+  left: 48%;
+  animation-delay: 2.2s;
+}
+.snowflake:nth-child(15) {
+  left: 58%;
+  animation-delay: 3.2s;
+}
+.snowflake:nth-child(16) {
+  left: 68%;
+  animation-delay: 4.2s;
+}
+.snowflake:nth-child(17) {
+  left: 78%;
+  animation-delay: 1.7s;
+}
+.snowflake:nth-child(18) {
+  left: 82%;
+  animation-delay: 2.7s;
+}
+.snowflake:nth-child(19) {
+  left: 65%;
+  animation-delay: 3.7s;
+}
+.snowflake:nth-child(20) {
+  left: 54%;
+  animation-delay: 4.7s;
+}
+.snowflake:nth-child(21) {
+  left: 24%;
+  animation-delay: 0.25s;
+}
+.snowflake:nth-child(22) {
+  left: 24%;
+  animation-delay: 0.5s;
+}
+.snowflake:nth-child(23) {
+  left: 34%;
+  animation-delay: 0.75s;
+}
+.snowflake:nth-child(24) {
+  left: 44%;
+  animation-delay: 0.6s;
+}
+.snowflake:nth-child(25) {
+  left: 54%;
+  animation-delay: 2.75s;
+}
+.snowflake:nth-child(26) {
+  left: 64%;
+  animation-delay: 1.75s;
+}
+.snowflake:nth-child(27) {
+  left: 74%;
+  animation-delay: 3.75s;
+}
+.snowflake:nth-child(28) {
+  left: 84%;
+  animation-delay: 1.4s;
+}
+.snowflake:nth-child(29) {
+  left: 74%;
+  animation-delay: 2.4s;
+}
+.snowflake:nth-child(30) {
+  left: 17%;
+  animation-delay: 3.4s;
+}
+
+.canvas:active .snowflake {
+  animation: none;
+}
+
+/***/
+.branch-top {
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 40px;
+  height: 75px;
+  background-color: #62838C;
+  position: absolute;
+  top: 5px;
+  left: 30px;
+}
+
+.branch-top-snow {
+  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+  background-size: 32px 32px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.branch-mid {
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 75px;
+  height: 115px;
+  background-color: #2D4959;
+  position: absolute;
+  top: 35px;
+  left: 12.5px;
+}
+
+.branch-mid-snow {
+  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+  background-size: 32px 32px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.branch-bot {
+  -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 100px;
+  height: 125px;
+  background-color: #142833;
+  position: absolute;
+  top: 80px;
+}
+
+.branch-bot-snow {
+  background: linear-gradient(135deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(225deg, #dbe8fc 25%, transparent 25%) -16px 0, linear-gradient(315deg, #dbe8fc 25%, transparent 25%), linear-gradient(45deg, #dbe8fc 25%, transparent 25%);
+  background-size: 32px 32px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.branch-shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to bottom, #12434f 0%, rgba(255, 255, 255, 0) 100%);
+  mix-blend-mode: multiply;
+}
+
+.star {
+  width: 0px;
+  height: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 14px solid gold;
+  border-left: 20px solid transparent;
+  transform: rotate(35deg);
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+
+.star:before {
+  border-bottom: 16px solid gold;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -9px;
+  left: -13px;
+  content: "";
+  transform: rotate(-35deg);
+}
+
+.star:after {
+  position: absolute;
+  top: 0.6px;
+  left: -21px;
+  width: 0px;
+  height: 0px;
+  border-right: 20px solid transparent;
+  border-bottom: 14px solid gold;
+  border-left: 20px solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+
+.baubles {
+  width: 16px;
+  height: 16px;
+  background-color: #bf1131;
+  border-radius: 100%;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  box-shadow: 8px 44px 0px 0px #960028, -8px 80px 0px 0px #ce0037, 20px 100px 0px 0px #ce0025, -24px 132px 0px 0px #bf1131, 32px 140px 0px 0px #bf1131;
+}
+
+.tree-shadow {
+  width: 200px;
+  height: 20px;
+  background: radial-gradient(ellipse at center, #0d5466 0%, rgba(138, 174, 188, 0) 65%, rgba(206, 223, 235, 0) 100%);
+  position: absolute;
+  bottom: -10px;
+  left: -35px;
+}
+
+/* *** */
+
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-webkit-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-moz-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+@-ms-keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-webkit-keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-moz-keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+@-ms-keyframes move-clouds-back {
+  from {background-position: 0;}
+  to {background-position:10000px 0;}
+}
+
+.stars, .twinkling, .clouds {
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+width:100%;
+height:100%;
+display:block;
+}
+
+.stars {
+background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+}
+
+.twinkling{
+background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+
+-moz-animation:move-twink-back 200s linear infinite;
+-ms-animation:move-twink-back 200s linear infinite;
+-o-animation:move-twink-back 200s linear infinite;
+-webkit-animation:move-twink-back 200s linear infinite;
+animation:move-twink-back 200s linear infinite;
+}
